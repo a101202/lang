@@ -1,17 +1,26 @@
 import java.util.HashMap;
 import java.util.Map;
 
+enum eTokenType {eVarToken, eConstIntToken, eKeyToken, eOperatorToken}
+enum eKeyToken {eIf}
+enum eVarToken {eInt}
+enum eOperatorToken {ePlus, eSet}
+
+abstract class Token {
+    final eTokenType tokenType;
+
+    protected Token(eTokenType tokenType) {
+        this.tokenType = tokenType;
+    }
+}
 
 final class Utils {
     private Utils() {}
 
-    static enum eKeyToken {eIf}
-    static enum eVarToken {eInt}
-    static enum eOperatorToken {ePlus, eSet}
+    final Map<String, eKeyToken> keyMap;
+    final Map<String, eVarToken> varMap;
+    final Map<String, eOperatorToken> operatorMap;
 
-    Map<String, eKeyToken> keyMap;
-    Map<String, eVarToken> varMap;
-    Map<String, eOperatorToken> operatorMap;
     {
         keyMap = new HashMap<>();
         keyMap.put("if", eKeyToken.eIf);
@@ -25,12 +34,16 @@ final class Utils {
     }
 }
 
+
+
+
+
 class Tokenzzz {
     class VarToken {
         final Integer address;
-        final Utils.eVarToken varType;
+        final eVarToken varType;
 
-        VarToken(Integer address, Utils.eVarToken varType) {
+        VarToken(Integer address, eVarToken varType) {
             this.address = address;
             this.varType = varType;
         }
@@ -43,9 +56,9 @@ class Tokenzzz {
 
     class ConstIntToken {
         final Integer address;
-        final Utils.eVarToken constIntType;
+        final eVarToken constIntType;
 
-        ConstIntToken(Integer address, Utils.eVarToken constIntType) {
+        ConstIntToken(Integer address, eVarToken constIntType) {
             this.address = address;
             this.constIntType = constIntType;
         }
@@ -57,9 +70,9 @@ class Tokenzzz {
     }
 
     class KeyToken {
-        final Utils.eKeyToken keyType;
+        final eKeyToken keyType;
 
-        KeyToken(Utils.eKeyToken keyType) {
+        KeyToken(eKeyToken keyType) {
             this.keyType = keyType;
         }
 
@@ -70,9 +83,9 @@ class Tokenzzz {
     }
 
     class OperatorToken {
-        final Utils.eOperatorToken opType;
+        final eOperatorToken opType;
 
-        OperatorToken(Utils.eOperatorToken opType) {
+        OperatorToken(eOperatorToken opType) {
             this.opType = opType;
         }
 
