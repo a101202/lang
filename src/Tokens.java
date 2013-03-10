@@ -1,5 +1,6 @@
 public class Tokens {
-    enum eKeyToken {eDecl, eInt}
+    enum eKeyToken {eInt}
+    enum eOperatorToken {ePlus}
 
     class NumToken {
         final int val;
@@ -24,6 +25,19 @@ public class Tokens {
         @Override
         public String toString() {
             return "KeyToken " + type.toString();
+        }
+    }
+
+    class OperatorToken {
+        final eOperatorToken op;
+
+        OperatorToken(eOperatorToken op) {
+            this.op = op;
+        }
+
+        @Override
+        public String toString() {
+            return "OperatorToken " + op.toString();
         }
     }
 }
