@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 enum eTokenType {eVarToken, eConstIntToken, eKeyToken, eOperatorToken}
 enum eKeyToken {eIf}
 enum eVarToken {eInt}
@@ -14,84 +11,63 @@ abstract class Token {
     }
 }
 
-final class Utils {
-    private Utils() {}
 
-    final Map<String, eKeyToken> keyMap;
-    final Map<String, eVarToken> varMap;
-    final Map<String, eOperatorToken> operatorMap;
+class VarToken extends Token {
+    final Integer address;
+    final eVarToken varType;
 
-    {
-        keyMap = new HashMap<>();
-        keyMap.put("if", eKeyToken.eIf);
+    VarToken(eTokenType tokenType, Integer address, eVarToken varType) {
+        super(tokenType);
+        this.address = address;
+        this.varType = varType;
+    }
 
-        varMap = new HashMap<>();
-        varMap.put("int", eVarToken.eInt);
-
-        operatorMap = new HashMap<>();
-        operatorMap.put("+", eOperatorToken.ePlus);
-        operatorMap.put("=", eOperatorToken.eSet);
+    @Override
+    public String toString() {
+        return "VarToken" + varType.toString() + " @" + address;
     }
 }
 
+class ConstIntToken extends Token {
+    final Integer address;
+    final eVarToken constIntType;
 
-
-
-
-class Tokenzzz {
-    class VarToken {
-        final Integer address;
-        final eVarToken varType;
-
-        VarToken(Integer address, eVarToken varType) {
-            this.address = address;
-            this.varType = varType;
-        }
-
-        @Override
-        public String toString() {
-            return "VarToken" + varType.toString() + " @" + address;
-        }
+    ConstIntToken(eTokenType tokenType, Integer address, eVarToken constIntType) {
+        super(tokenType);
+        this.address = address;
+        this.constIntType = constIntType;
     }
 
-    class ConstIntToken {
-        final Integer address;
-        final eVarToken constIntType;
+    @Override
+    public String toString() {
+        return "ConstIntToken " + constIntType.toString() + " @" + address;
+    }
+}
 
-        ConstIntToken(Integer address, eVarToken constIntType) {
-            this.address = address;
-            this.constIntType = constIntType;
-        }
+class KeyToken extends Token {
+    final eKeyToken keyType;
 
-        @Override
-        public String toString() {
-            return "ConstIntToken " + constIntType.toString() + " @" + address;
-        }
+    KeyToken(eTokenType tokenType, eKeyToken keyType) {
+        super(tokenType);
+        this.keyType = keyType;
     }
 
-    class KeyToken {
-        final eKeyToken keyType;
+    @Override
+    public String toString() {
+        return "KeyToken " + keyType.toString();
+    }
+}
 
-        KeyToken(eKeyToken keyType) {
-            this.keyType = keyType;
-        }
+class OperatorToken extends Token {
+    final eOperatorToken opType;
 
-        @Override
-        public String toString() {
-            return "KeyToken " + keyType.toString();
-        }
+    OperatorToken(eTokenType tokenType, eOperatorToken opType) {
+        super(tokenType);
+        this.opType = opType;
     }
 
-    class OperatorToken {
-        final eOperatorToken opType;
-
-        OperatorToken(eOperatorToken opType) {
-            this.opType = opType;
-        }
-
-        @Override
-        public String toString() {
-            return "OperatorToken " + opType.toString();
-        }
+    @Override
+    public String toString() {
+        return "OperatorToken " + opType.toString();
     }
 }
