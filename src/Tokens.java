@@ -1,66 +1,88 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Tokens {
-    enum eKeyToken {eIf}
-    enum eVarToken {eInt}
-    enum eOperatorToken {ePlus, eSet}
 
-    Map<String, eKeyToken> keyMap;
+final class Utils {
+    private Utils() {}
+
+    static enum eKeyToken {eIf}
+    static enum eVarToken {eInt}
+    static enum eOperatorToken {ePlus, eSet}
+}
+
+class Tokenzzz {
+    public Map<String, Utils.eKeyToken> keyMap;
     {
         keyMap = new HashMap<>();
-        keyMap.put("if", eKeyToken.eIf);
+        keyMap.put("if", Utils.eKeyToken.eIf);
     }
 
-    Map<String, eVarToken> varMap;
+    Map<String, Utils.eVarToken> varMap;
     {
         varMap = new HashMap<>();
-        varMap.put("int", eVarToken.eInt);
+        varMap.put("int", Utils.eVarToken.eInt);
     }
 
-    Map<String, eOperatorToken> operatorMap;
+    Map<String, Utils.eOperatorToken> operatorMap;
     {
         operatorMap = new HashMap<>();
-        operatorMap.put("+", eOperatorToken.ePlus);
-        operatorMap.put("=", eOperatorToken.eSet);
+        operatorMap.put("+", Utils.eOperatorToken.ePlus);
+        operatorMap.put("=", Utils.eOperatorToken.eSet);
     }
 
-    class ConstIntToken {
-        final int val;
+    class VarToken {
+        final Integer address;
+        final Utils.eVarToken varType;
 
-        ConstIntToken(int val) {
-            this.val = val;
+        VarToken(Integer address, Utils.eVarToken varType) {
+            this.address = address;
+            this.varType = varType;
         }
 
         @Override
         public String toString() {
-            return "ConstIntToken " + val;
+            return "VarToken" + varType.toString() + " @" + address;
+        }
+    }
+
+    class ConstIntToken {
+        final Integer address;
+        final Utils.eVarToken constIntType;
+
+        ConstIntToken(Integer address, Utils.eVarToken constIntType) {
+            this.address = address;
+            this.constIntType = constIntType;
+        }
+
+        @Override
+        public String toString() {
+            return "ConstIntToken " + constIntType.toString() + " @" + address;
         }
     }
 
     class KeyToken {
-        final eKeyToken type;
+        final Utils.eKeyToken keyType;
 
-        KeyToken(eKeyToken type) {
-            this.type = type;
+        KeyToken(Utils.eKeyToken keyType) {
+            this.keyType = keyType;
         }
 
         @Override
         public String toString() {
-            return "KeyToken " + type.toString();
+            return "KeyToken " + keyType.toString();
         }
     }
 
     class OperatorToken {
-        final eOperatorToken op;
+        final Utils.eOperatorToken opType;
 
-        OperatorToken(eOperatorToken op) {
-            this.op = op;
+        OperatorToken(Utils.eOperatorToken opType) {
+            this.opType = opType;
         }
 
         @Override
         public String toString() {
-            return "OperatorToken " + op.toString();
+            return "OperatorToken " + opType.toString();
         }
     }
 }
