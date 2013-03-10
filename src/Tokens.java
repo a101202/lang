@@ -25,23 +25,23 @@ public class Tokens {
         operatorMap.put("=", eOperatorToken.eSet);
     }
 
-    class NumToken {
+    class ConstIntToken {
         final int val;
 
-        NumToken(int val) {
+        ConstIntToken(int val) {
             this.val = val;
         }
 
         @Override
         public String toString() {
-            return "NumToken " + val;
+            return "ConstIntToken " + val;
         }
     }
 
     class KeyToken {
-        final eVarToken type;
+        final eKeyToken type;
 
-        KeyToken(eVarToken type) {
+        KeyToken(eKeyToken type) {
             this.type = type;
         }
 
