@@ -11,7 +11,6 @@ abstract class Token {
     }
 }
 
-
 class VarToken extends Token {
     final Integer address;
     final eVarToken varType;

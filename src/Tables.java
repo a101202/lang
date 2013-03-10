@@ -1,13 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: odmin
- * Date: 11.03.13
- * Time: 1:44
- * To change this template use File | Settings | File Templates.
- */
 final class Tables {
     private Tables() {}
 

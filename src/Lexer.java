@@ -1,4 +1,10 @@
+import java.util.LinkedList;
+import java.util.List;
+
 class Lexer {
-    void f(){
+    static List<Token> tokenList(){
+        List<Token> tokenList = new LinkedList<>();
+
+        return null;
     }
 }
