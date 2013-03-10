@@ -8,28 +8,28 @@ final class Utils {
     static enum eKeyToken {eIf}
     static enum eVarToken {eInt}
     static enum eOperatorToken {ePlus, eSet}
+
+    public Map<String, eKeyToken> keyMap;
+    {
+        keyMap = new HashMap<>();
+        keyMap.put("if", eKeyToken.eIf);
+    }
+
+    Map<String, eVarToken> varMap;
+    {
+        varMap = new HashMap<>();
+        varMap.put("int", eVarToken.eInt);
+    }
+
+    Map<String, eOperatorToken> operatorMap;
+    {
+        operatorMap = new HashMap<>();
+        operatorMap.put("+", eOperatorToken.ePlus);
+        operatorMap.put("=", eOperatorToken.eSet);
+    }
 }
 
 class Tokenzzz {
-    public Map<String, Utils.eKeyToken> keyMap;
-    {
-        keyMap = new HashMap<>();
-        keyMap.put("if", Utils.eKeyToken.eIf);
-    }
-
-    Map<String, Utils.eVarToken> varMap;
-    {
-        varMap = new HashMap<>();
-        varMap.put("int", Utils.eVarToken.eInt);
-    }
-
-    Map<String, Utils.eOperatorToken> operatorMap;
-    {
-        operatorMap = new HashMap<>();
-        operatorMap.put("+", Utils.eOperatorToken.ePlus);
-        operatorMap.put("=", Utils.eOperatorToken.eSet);
-    }
-
     class VarToken {
         final Integer address;
         final Utils.eVarToken varType;
