@@ -9,20 +9,16 @@ final class Utils {
     static enum eVarToken {eInt}
     static enum eOperatorToken {ePlus, eSet}
 
-    public Map<String, eKeyToken> keyMap;
+    Map<String, eKeyToken> keyMap;
+    Map<String, eVarToken> varMap;
+    Map<String, eOperatorToken> operatorMap;
     {
         keyMap = new HashMap<>();
         keyMap.put("if", eKeyToken.eIf);
-    }
 
-    Map<String, eVarToken> varMap;
-    {
         varMap = new HashMap<>();
         varMap.put("int", eVarToken.eInt);
-    }
 
-    Map<String, eOperatorToken> operatorMap;
-    {
         operatorMap = new HashMap<>();
         operatorMap.put("+", eOperatorToken.ePlus);
         operatorMap.put("=", eOperatorToken.eSet);
