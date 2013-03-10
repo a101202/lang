@@ -1,9 +1,9 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author a101202
  */
+import java.util.HashMap;
+import java.util.Map;
+
 public class Tokens {
     enum eKeyToken {eInt}
     enum eOperatorToken {ePlus, eSet}
