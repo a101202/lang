@@ -1,6 +1,25 @@
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author a101202
+ */
 public class Tokens {
     enum eKeyToken {eInt}
-    enum eOperatorToken {ePlus}
+    enum eOperatorToken {ePlus, eSet}
+
+    Map<String, eKeyToken> keyMap;
+    {
+        keyMap = new HashMap<>();
+        keyMap.put("int", eKeyToken.eInt);
+    }
+
+    Map<String, eOperatorToken> operatorMap;
+    {
+        operatorMap = new HashMap<>();
+        operatorMap.put("+", eOperatorToken.ePlus);
+        operatorMap.put("=", eOperatorToken.eSet);
+    }
 
     class NumToken {
         final int val;
