@@ -1,6 +1,3 @@
-/**
- * @author a101202
- */
 import java.util.HashMap;
 import java.util.Map;
 
