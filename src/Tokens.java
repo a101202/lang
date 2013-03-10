@@ -2,13 +2,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Tokens {
-    enum eKeyToken {eInt}
+    enum eKeyToken {eIf}
+    enum eVarToken {eInt}
     enum eOperatorToken {ePlus, eSet}
 
     Map<String, eKeyToken> keyMap;
     {
         keyMap = new HashMap<>();
-        keyMap.put("int", eKeyToken.eInt);
+        keyMap.put("if", eKeyToken.eIf);
+    }
+
+    Map<String, eVarToken> varMap;
+    {
+        varMap = new HashMap<>();
+        varMap.put("int", eVarToken.eInt);
     }
 
     Map<String, eOperatorToken> operatorMap;
@@ -32,9 +39,9 @@ public class Tokens {
     }
 
     class KeyToken {
-        final eKeyToken type;
+        final eVarToken type;
 
-        KeyToken(eKeyToken type) {
+        KeyToken(eVarToken type) {
             this.type = type;
         }
 
